@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>sssx</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" th:href="@{/css/header/datetimepicker.css}"/>
+    <script th:src="@{/css/header/jquery.min.js}"></script>
+    <script th:src="@{/css/header/datetimepicker.js}"></script>
+    <script th:src="@{/css/header/dates.js}"></script>
+
+</head>
+<body>
+<div class="container">
+    <div id="signupbox" style=" margin-top:50px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <div class="panel-title"><h2>Product Details</h2></div>
+                <div style="float:right; font-size: 85%; position: relative; top:-10px"> </div>
+            </div>
+            <div class="panel-body" >
+
+    <div>
+         <form class="form-horizontal"  th:action="@{/client}" method="post">
+
+            <div class="form-group" th:class="${#fields.hasErrors('clientForm.name')} ? 'form-group has-error' : 'form-group'">
+                <label class="col-sm-2 control-label">Name:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" th:field="*{clientForm.name}" th:value="${clientForm.name}" th:errorclass="has-error"/>
+
+                    <span class="help-block">
+                       <ul>
+                           <li th:each="err : ${#fields.errors('clientForm.name')}" th:text="${err}" />
+                       </ul>
+                    </span>
+                </div>
+            </div>
+
+                <div class="form-group" th:class="${#fields.hasErrors('clientForm.nationalId')} ? 'form-group has-error' : 'form-group'">
+                    <label class="col-sm-2 control-label">National Id:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" th:field="*{clientForm.nationalId}" th:value="${clientForm.nationalId}" th:errorclass="has-error"/>
+
+                        <span class="help-block">
+                       <ul>
+                           <li th:each="err : ${#fields.errors('clientForm.nationalId')}" th:text="${err}" />
+                       </ul>
+                    </span>
+                    </div>
+                </div>
+
+
+
+
+
+
+            <div class="form-group" th:class="${#fields.hasErrors('depositForm.amount')} ? 'form-group has-error' : 'form-group'">
+                <label class="col-sm-2 control-label">Loan Amount:</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" th:field="*{depositForm.amount}" th:errorclass="has-error"/>
+
+                    <span class="help-block">
+                       <ul>
+                           <li th:each="err : ${#fields.errors('depositForm.amount')}" th:text="${err}" />
+                       </ul>
+                    </span>
+                </div>
+            </div>
+
+
+            <div class="form-group" th:class="${#fields.hasErrors('depositForm.date')} ? 'form-group has-error' : 'form-group'">
+                <label class="col-sm-2 control-label">Dia:</label>
+                <div class="col-sm-10">
+                    <input  type="text" class="form-control" name="yearOne" id="startDate" th:field="*{depositForm.date}" th:errorclass="has-error"/>
+
+                    <span class="help-block">
+                       <ul>
+                           <li th:each="err : ${#fields.errors('depositForm.date')}" th:text="${err}" />
+                       </ul>
+                    </span>
+                </div>
+            </div>
+
+
+
+            <div class="row">
+                <button type="submit" class="btn btn-default">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+</div>
+</div>
+
+</body>
+</html>
